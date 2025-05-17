@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const { getAllUser } = require('./routers/user.router');
 
 dotenv.config();
 
@@ -17,6 +18,10 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
+app.use('/users',getAllUser)
+
+
+
 console.log(process.env.MONGO_URI);
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
