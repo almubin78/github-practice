@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { getAllUser } = require('./routers/user.router');
+const { successResponse } = require('./controller/success.controller');
 
 dotenv.config();
 
@@ -16,7 +17,10 @@ app.use(cookieParser());
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('API is running...');
+  successResponse(res, {
+    message: 'Welcome to the API',
+    payload: null,
+  });
 });
 app.use('/users',getAllUser)
 
