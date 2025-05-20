@@ -17,8 +17,20 @@ const successResponseWithToken=(res,{message,payload,token})=>{
         token:token
     })
 }
+const errorResponse=(res,{message,payload})=>{
+    message=message || "You have got the message from error controller"
+    payload=payload || null
+    
+    res.status(200).json({
+        status:"error",
+        message:message,
+        payload:payload
+    })
+
+}
 
 module.exports={
     successResponse,
-    successResponseWithToken
+    successResponseWithToken,
+    errorResponse
 }
